@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>高校生 | 沖縄県ハンドボール協会</title>
+  <title>中学生 | 沖縄県ハンドボール協会</title>
   <!-- Tailwind CSS (デザイン用) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons (アイコン用) -->
@@ -53,16 +53,16 @@
     <!-- メインコンテンツ -->
     <div class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full flex flex-col lg:flex-row gap-8">
       
-      <!-- 左カラム（メイン）：カテゴリーコンテンツ -->
+      <!-- 左カラム（メイン） -->
       <main class="flex-1 w-full">
         
         <!-- ページタイトル -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-6">
           <h2 class="text-2xl font-bold text-[#003366] flex items-center gap-2 border-b-2 border-[#003366] pb-3">
-            <i data-lucide="users" class="w-6 h-6 text-blue-500"></i> 高校生の部
+            <i data-lucide="users" class="w-6 h-6 text-[#337ab7]"></i> 中学生の部
           </h2>
           <p class="text-gray-600 text-sm mt-4 leading-relaxed">
-            沖縄県内の高校生を対象とした大会情報、選抜チームの活動記録などを掲載しています。<br>
+            沖縄県内の中学生を対象とした大会情報、選抜チームの活動記録などを掲載しています。<br>
             ※各種大会の要項や組み合わせ表は、下の「資料置き場」よりダウンロードしてください。
           </p>
         </div>
@@ -70,27 +70,25 @@
         <!-- Googleドライブ埋め込みエリア（資料置き場） -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-6">
           <h3 class="text-lg font-bold text-[#333] flex items-center gap-2 border-b border-gray-200 pb-2 mb-4">
-            <i data-lucide="folder-open" class="w-5 h-5 text-[#f0ad4e]"></i> 大会要項・組み合わせ・結果ファイル
+            <i data-lucide="folder-open" class="w-5 h-5 text-[#337ab7]"></i> 大会要項・組み合わせ・結果ファイル
           </h3>
           <p class="text-xs text-gray-500 mb-4">以下のリストから各種PDFファイルを閲覧・ダウンロードできます。</p>
           
-          <!-- Google Drive iframe プレースホルダー -->
           <div class="w-full h-80 bg-gray-50 rounded border-2 border-dashed border-gray-300 flex flex-col items-center justify-center">
             <i data-lucide="hard-drive" class="w-10 h-10 text-gray-400 mb-2"></i>
             <p class="text-sm font-bold text-gray-500">ここにGoogleドライブのフォルダを埋め込みます</p>
-            <p class="text-xs text-gray-400 mt-1">※先生方がドライブにPDFを入れるだけで自動で表示されるようになります</p>
           </div>
         </div>
 
-        <!-- 高校生カテゴリー専用のニュース -->
+        <!-- 中学生カテゴリー専用のニュース -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-          <div class="flex items-center justify-between border-b-2 border-[#f0ad4e] pb-3 mb-6">
+          <div class="flex items-center justify-between border-b-2 border-[#337ab7] pb-3 mb-6">
             <h3 class="text-xl font-bold text-[#333] flex items-center gap-2">
-              <i data-lucide="bell" class="w-5 h-5 text-[#f0ad4e]"></i> 高校生に関する新着情報
+              <i data-lucide="bell" class="w-5 h-5 text-[#337ab7]"></i> 中学生に関する新着情報
             </h3>
           </div>
 
-          <!-- ニュースリスト（JSで高校生のみ抽出して表示） -->
+          <!-- ニュースリスト -->
           <div class="space-y-3" id="news-list-container">
             <div class="text-center py-10 text-gray-500">データを読み込んでいます...</div>
           </div>
@@ -109,8 +107,8 @@
             <li><a href="news.html" class="group block py-2.5 px-3 hover:bg-blue-50 rounded transition flex justify-between items-center text-gray-700 font-bold border-b border-gray-100 last:border-0">お知らせ <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:text-[#003366] transition"></i></a></li>
             <li><a href="results.html" class="group block py-2.5 px-3 hover:bg-blue-50 rounded transition flex justify-between items-center text-gray-700 font-bold border-b border-gray-100 last:border-0">大会結果 <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:text-[#003366] transition"></i></a></li>
             <li><a href="elementary.html" class="group block py-2.5 px-3 hover:bg-blue-50 rounded transition flex justify-between items-center text-gray-700 font-bold border-b border-gray-100 last:border-0">小学生 <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:text-[#003366] transition"></i></a></li>
-            <li><a href="junior-high.html" class="group block py-2.5 px-3 hover:bg-blue-50 rounded transition flex justify-between items-center text-gray-700 font-bold border-b border-gray-100 last:border-0">中学生 <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:text-[#003366] transition"></i></a></li>
-            <li><a href="highschool.html" class="group block py-2.5 px-3 bg-blue-50 text-[#003366] rounded transition flex justify-between items-center font-bold border-b border-gray-100 last:border-0">高校生 <i data-lucide="chevron-right" class="w-4 h-4 text-[#003366]"></i></a></li>
+            <li><a href="junior-high.html" class="group block py-2.5 px-3 bg-blue-50 text-[#003366] rounded transition flex justify-between items-center font-bold border-b border-gray-100 last:border-0">中学生 <i data-lucide="chevron-right" class="w-4 h-4 text-[#003366]"></i></a></li>
+            <li><a href="highschool.html" class="group block py-2.5 px-3 hover:bg-blue-50 rounded transition flex justify-between items-center text-gray-700 font-bold border-b border-gray-100 last:border-0">高校生 <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:text-[#003366] transition"></i></a></li>
             <li><a href="general.html" class="group block py-2.5 px-3 hover:bg-blue-50 rounded transition flex justify-between items-center text-gray-700 font-bold border-b border-gray-100 last:border-0">一般・大学 <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:text-[#003366] transition"></i></a></li>
           </ul>
         </div>
@@ -151,7 +149,7 @@
 
 
   <!-- ==========================================
-       Firebase 連携システム (高校生専用フィルタ)
+       Firebase 連携システム (中学生専用フィルタ)
        ========================================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
@@ -195,8 +193,8 @@
       
       onSnapshot(newsRef, (snapshot) => {
         let allData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        // ここで「高校生」に関するお知らせだけを抽出しています
-        newsData = allData.filter(item => item.category === '高校生');
+        // ここで「中学生」に関するお知らせだけを抽出
+        newsData = allData.filter(item => item.category === '中学生');
         newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
         renderNews();
       }, (error) => console.error("DB Error:", error));
@@ -204,7 +202,7 @@
 
     const getCategoryClass = (cat) => {
       switch(cat) {
-        case '高校生': return 'badge-hs';
+        case '中学生': return 'badge-jh';
         default: return 'badge-info';
       }
     };
@@ -230,7 +228,7 @@
           </div>
         `).join('');
       } else {
-        container.innerHTML = '<div class="text-center py-10 text-gray-500">現在、高校生の部に関する新着情報はありません。</div>';
+        container.innerHTML = '<div class="text-center py-10 text-gray-500">現在、中学生の部に関する新着情報はありません。</div>';
       }
 
       lucide.createIcons();
