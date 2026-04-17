@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>高校生 | 沖縄県ハンドボール協会</title>
+  <title>小学生 | 沖縄県ハンドボール協会</title>
   <!-- Tailwind CSS (デザイン用) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons (アイコン用) -->
@@ -59,10 +59,10 @@
         <!-- ページタイトル -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-6">
           <h2 class="text-2xl font-bold text-[#003366] flex items-center gap-2 border-b-2 border-[#003366] pb-3">
-            <i data-lucide="users" class="w-6 h-6 text-blue-500"></i> 高校生の部
+            <i data-lucide="users" class="w-6 h-6 text-blue-500"></i> 小学生の部
           </h2>
           <p class="text-gray-600 text-sm mt-4 leading-relaxed">
-            沖縄県内の高校生を対象とした大会情報、選抜チームの活動記録などを掲載しています。<br>
+            沖縄県内の小学生を対象とした大会情報、選抜チームの活動記録などを掲載しています。<br>
             ※各種大会の要項や組み合わせ表は、下の「資料置き場」よりダウンロードしてください。
           </p>
         </div>
@@ -86,11 +86,11 @@
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <div class="flex items-center justify-between border-b-2 border-[#f0ad4e] pb-3 mb-6">
             <h3 class="text-xl font-bold text-[#333] flex items-center gap-2">
-              <i data-lucide="bell" class="w-5 h-5 text-[#f0ad4e]"></i> 高校生に関する新着情報
+              <i data-lucide="bell" class="w-5 h-5 text-[#f0ad4e]"></i> 小学生に関する新着情報
             </h3>
           </div>
 
-          <!-- ニュースリスト（JSで高校生のみ抽出して表示） -->
+          <!-- ニュースリスト（JSで小学生のみ抽出して表示） -->
           <div class="space-y-3" id="news-list-container">
             <div class="text-center py-10 text-gray-500">データを読み込んでいます...</div>
           </div>
@@ -210,7 +210,7 @@
 
 
   <!-- ==========================================
-       Firebase 連携システム (高校生専用フィルタ)
+       Firebase 連携システム (小学生専用フィルタ)
        ========================================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
@@ -254,7 +254,7 @@
       
       onSnapshot(newsRef, (snapshot) => {
         let allData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        // ここで「高校生」に関するお知らせだけを抽出しています
+        // ここで「小学生」に関するお知らせだけを抽出しています
         newsData = allData.filter(item => item.category === '高校生');
         newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
         renderNews();
