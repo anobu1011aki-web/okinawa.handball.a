@@ -9,7 +9,6 @@
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
 
-  <!-- ヘッダー -->
   <header class="bg-[#1e1e1e] text-white shadow-md">
     <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-2 font-bold">
@@ -27,64 +26,53 @@
       <i data-lucide="edit" class="w-6 h-6 text-blue-600"></i> 新規お知らせの投稿
     </h2>
 
-    <!-- 投稿フォーム -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8">
+      <div id="connection-status" class="mb-6 p-3 rounded bg-gray-50 text-xs text-gray-500 flex items-center gap-2">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+        </span>
+        システム接続中...
+      </div>
+
       <form id="post-form" class="space-y-6">
-        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- 日付入力 -->
           <div>
-            <label class="block text-sm font-bold text-gray-700 mb-2">投稿日・大会日 <span class="text-red-500 text-xs ml-1">必須</span></label>
-            <input type="date" id="date" required class="w-full border border-gray-300 p-3 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+            <label class="block text-sm font-bold text-gray-700 mb-2">投稿日・大会日</label>
+            <input type="date" id="date" required class="w-full border border-gray-300 p-3 rounded-md outline-none focus:ring-2 focus:ring-blue-200">
           </div>
-          
-          <!-- カテゴリー選択 -->
           <div>
-            <label class="block text-sm font-bold text-gray-700 mb-2">カテゴリー（表示先） <span class="text-red-500 text-xs ml-1">必須</span></label>
-            <select id="category" required class="w-full border border-gray-300 p-3 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white">
-              <option value="お知らせ">お知らせ（全体）</option>
+            <label class="block text-sm font-bold text-gray-700 mb-2">カテゴリー</label>
+            <select id="category" required class="w-full border border-gray-300 p-3 rounded-md bg-white">
+              <option value="お知らせ">お知らせ</option>
               <option value="大会結果">大会結果</option>
-              <option value="小学生">小学生の部</option>
-              <option value="中学生">中学生の部</option>
-              <option value="高校生">高校生の部</option>
-              <option value="一般・大学">一般・大学の部</option>
+              <option value="小学生">小学生</option>
+              <option value="中学生">中学生</option>
+              <option value="高校生">高校生</option>
+              <option value="一般・大学">一般・大学</option>
             </select>
           </div>
         </div>
-
-        <!-- タイトル・内容入力 -->
         <div>
-          <label class="block text-sm font-bold text-gray-700 mb-2">お知らせ内容 <span class="text-red-500 text-xs ml-1">必須</span></label>
-          <textarea id="title" required rows="4" placeholder="第59回全国高校選抜大会において、興南高が準優勝に輝きました..." class="w-full border border-gray-300 p-3 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition resize-none"></textarea>
+          <label class="block text-sm font-bold text-gray-700 mb-2">内容</label>
+          <textarea id="title" required rows="4" placeholder="例：〇〇大会で興南高校が優勝しました！" class="w-full border border-gray-300 p-3 rounded-md resize-none outline-none focus:ring-2 focus:ring-blue-200"></textarea>
         </div>
-
-        <!-- 送信ボタン -->
         <div class="pt-4 border-t border-gray-100 flex justify-end">
-          <button type="submit" id="submit-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition flex items-center gap-2">
-            <i data-lucide="send" class="w-5 h-5"></i> サイトに公開する
+          <button type="submit" id="submit-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition disabled:bg-gray-400">
+            サイトに公開する
           </button>
         </div>
       </form>
-
-      <!-- 処理中・完了メッセージの表示エリア -->
       <div id="status-message" class="hidden mt-4 p-4 rounded-md font-bold text-center"></div>
     </div>
   </main>
 
-  <script>
-    lucide.createIcons();
-  </script>
-
-  <!-- ==========================================
-       Firebase 書き込みシステム (管理者用)
-       ========================================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    // 本番環境用のFirebase接続情報（鍵）
-    let firebaseConfig = {
+    const firebaseConfig = {
       apiKey: "AIzaSyBrv64pi_fxsRLZjh5oX3jZIlD2dWGQPFs",
       authDomain: "okinawa-handball.firebaseapp.com",
       projectId: "okinawa-handball",
@@ -92,65 +80,55 @@
       messagingSenderId: "672118967740",
       appId: "1:672118967740:web:b55537a9c68fcf1acaefb9"
     };
-    let appId = 'okinawa-handball-prod';
-    
-    if (typeof __firebase_config !== 'undefined') {
-      firebaseConfig = JSON.parse(__firebase_config);
-      appId = typeof __app_id !== 'undefined' ? __app_id : appId;
-    }
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
+    const appId = 'okinawa-handball-prod';
 
-    // 認証
-    async function initAuth() {
-      try {
-        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-          await signInWithCustomToken(auth, __initial_auth_token);
-        } else {
-          await signInAnonymously(auth);
-        }
-      } catch (e) { console.error("Auth Error:", e); }
-    }
-    initAuth();
+    const statusEl = document.getElementById('connection-status');
 
-    // 投稿処理
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        statusEl.innerHTML = '<span class="text-green-600 font-bold">✅ システム接続完了（投稿可能です）</span>';
+      } else {
+        signInAnonymously(auth).catch(e => {
+          statusEl.innerHTML = `<span class="text-red-600 font-bold">❌ 接続エラー: ${e.message}</span><br>FirebaseのAuthenticationで「匿名」をオンにしてください。`;
+        });
+      }
+    });
+
     document.getElementById('post-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submit-btn');
       const statusMsg = document.getElementById('status-message');
       
-      const dateVal = document.getElementById('date').value;
-      const categoryVal = document.getElementById('category').value;
-      const titleVal = document.getElementById('title').value;
+      const data = {
+        date: document.getElementById('date').value,
+        category: document.getElementById('category').value,
+        title: document.getElementById('title').value,
+        hasFile: false
+      };
 
       btn.disabled = true;
-      btn.innerHTML = '<span class="animate-spin mr-2">⏳</span> 送信中...';
+      btn.textContent = '送信中...';
 
       try {
         const newsRef = collection(db, 'artifacts', appId, 'public', 'data', 'news');
-        await addDoc(newsRef, {
-          date: dateVal,
-          category: categoryVal,
-          title: titleVal,
-          hasFile: false
-        });
-        
-        statusMsg.textContent = "✅ 投稿が完了しました！公開ページに反映されています。";
+        await addDoc(newsRef, data);
+        statusMsg.textContent = "✅ 投稿が完了しました！";
         statusMsg.className = "mt-4 p-4 rounded-md font-bold text-center bg-green-100 text-green-700 block";
         document.getElementById('post-form').reset();
-        
       } catch (error) {
-        console.error("DB Error:", error);
-        statusMsg.textContent = "❌ エラーが発生しました。データベースの設定を確認してください。";
+        statusMsg.textContent = "❌ エラー: " + error.message;
         statusMsg.className = "mt-4 p-4 rounded-md font-bold text-center bg-red-100 text-red-700 block";
       } finally {
         btn.disabled = false;
-        btn.innerHTML = '<i data-lucide="send" class="w-5 h-5"></i> サイトに公開する';
-        lucide.createIcons();
+        btn.textContent = 'サイトに公開する';
       }
     });
+
+    lucide.createIcons();
   </script>
 </body>
 </html>
