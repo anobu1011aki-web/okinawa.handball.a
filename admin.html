@@ -83,8 +83,15 @@
     import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    // ★ 本番運用時はここのYOUR_API_KEYなどを設定します ★
-    let firebaseConfig = { apiKey: "YOUR_API_KEY", authDomain: "YOUR_PROJECT_ID.firebaseapp.com", projectId: "YOUR_PROJECT_ID" };
+    // 本番環境用のFirebase接続情報（鍵）
+    let firebaseConfig = {
+      apiKey: "AIzaSyBrv64pi_fxsRLZjh5oX3jZIlD2dWGQPFs",
+      authDomain: "okinawa-handball.firebaseapp.com",
+      projectId: "okinawa-handball",
+      storageBucket: "okinawa-handball.firebasestorage.app",
+      messagingSenderId: "672118967740",
+      appId: "1:672118967740:web:b55537a9c68fcf1acaefb9"
+    };
     let appId = 'okinawa-handball-prod';
     
     if (typeof __firebase_config !== 'undefined') {
